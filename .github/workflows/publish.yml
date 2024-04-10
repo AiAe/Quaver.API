@@ -1,0 +1,33 @@
+name: NuGet Publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Get latest tag
+        id: get_tag
+        run: echo ::set-output name=TAG::$(git describe --abbrev=0 --tags)
+
+      - name: Package version
+        id: version
+        run: echo "::set-output name=PACKAGE_VERSION::${GITHUB_REF##*/}-${{ steps.get_tag.outputs.TAG }}"
+
+      - name: Publish
+        run: dotnet nuget push Quaver.API.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --version ${{ steps.version.outputs.PACKAGE_VERSION }}
