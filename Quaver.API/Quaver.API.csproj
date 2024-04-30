@@ -7,6 +7,8 @@
     <InformationalVersion>$(FileVersion)</InformationalVersion>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
     <EnablePackageValidation>false</EnablePackageValidation>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RepositoryUrl>https://github.com/Quaver/Quaver.API</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Resources\names.txt" />
