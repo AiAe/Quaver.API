@@ -5,12 +5,8 @@
     <Version>$(FileVersion)</Version>
     <AssemblyVersion>$(FileVersion)</AssemblyVersion>
     <InformationalVersion>$(FileVersion)</InformationalVersion>
-    <Product>Quaver.API</Product>
-    <Description />
-  </PropertyGroup>
-  <PropertyGroup>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
-    <EnablePackageValidation>true</EnablePackageValidation>
+    <EnablePackageValidation>false</EnablePackageValidation>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Resources\names.txt" />
